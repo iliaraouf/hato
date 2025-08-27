@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -10,6 +11,7 @@ body {
   background-color: #ffffff;
   color: #1a1a1a;
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Navbar */
@@ -23,12 +25,14 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .navbar .logo {
   font-size: 1.8rem;
   font-weight: bold;
   color: #4a4a4a;
+  transition: color 0.3s ease;
 }
 
 .navbar ul {
@@ -62,6 +66,7 @@ body {
   transition: width 0.3s ease;
 }
 
+.navbar a:hover::after,
 .navbar a.active::after {
   width: 100%;
 }
@@ -75,22 +80,26 @@ body {
   justify-content: center;
   text-align: center;
   color: #000000;
+  transition: background 0.5s ease-in-out;
 }
 
 .hero-text h1 {
   font-size: 3rem;
   margin-bottom: 10px;
+  animation: fadeInDown 1s ease-out;
 }
 
 .hero-text p {
   font-size: 1.2rem;
+  animation: fadeInUp 1s ease-out;
 }
 
-/* General Section Styling */
+/* Section Styling */
 .section {
   padding: 60px 40px;
   max-width: 1200px;
   margin: auto;
+  transition: padding 0.3s ease;
 }
 
 /* Products Grid */
@@ -98,6 +107,8 @@ body {
   display: flex;
   gap: 30px;
   margin-top: 30px;
+  flex-wrap: wrap;
+  transition: gap 0.3s ease;
 }
 
 .product-card {
@@ -106,11 +117,12 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   flex: 1;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
 /* Chat Section */
@@ -118,6 +130,7 @@ body {
   background-color: #ffffff;
   border-radius: 12px;
   padding: 40px;
+  transition: background-color 0.3s ease;
 }
 
 #chat-container {
@@ -127,6 +140,7 @@ body {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
 #chat-log {
@@ -137,10 +151,12 @@ body {
   border-radius: 8px;
   margin-bottom: 15px;
   background: #ffffff;
+  transition: border-color 0.3s ease;
 }
 
 .chat-message {
   margin-bottom: 10px;
+  transition: color 0.3s ease;
 }
 
 .chat-message.user {
@@ -163,6 +179,13 @@ body {
   padding: 10px;
   border: 1px solid #dce4dc;
   border-radius: 6px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#user-input:focus {
+  border-color: #a2c9a0;
+  outline: none;
+  box-shadow: 0 0 5px rgba(162, 201, 160, 0.5);
 }
 
 #chat-form button {
@@ -172,6 +195,7 @@ body {
   padding: 10px 16px;
   border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 #chat-form button:hover {
@@ -185,4 +209,28 @@ body {
   background-color: #ffffff;
   color: #888;
   font-size: 0.9rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
